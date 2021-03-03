@@ -24,4 +24,5 @@ FOREIGN KEY (id_produto) REFERENCES
 gn_vendas.produtos(id_produto);
 ~~~
 
-2. #### O segundo passo é clonar o repositório do projeto 
+2. #### O segundo passo é clonar o repositório do [projeto](https://github.com/BielCR/GnVendas.git) 
+3. #### Agora execute com o xampp
