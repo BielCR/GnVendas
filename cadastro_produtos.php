@@ -31,7 +31,7 @@
                 <input type="number" name="valorProduto" id="valorProduto" step="0.01" min="0.01" class="form-control form-group" required>
                 <!--buttons de envio e cancelamento-->
                 <button type="submit" class="btn btn-primary form-group">Cadastrar</button>
-                <button type="reset" class="btn btn-danger form-group">Cancelar</button>
+                <button type="reset" class="btn btn-danger form-group">Cancelar</button>    
             </form>
         </div>
     </div>

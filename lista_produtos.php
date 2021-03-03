@@ -17,14 +17,8 @@ include "conexao.php";
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" integrity="sha384-w1Q4orYjBQndcko6MimVbzY0tgp4pWB4lZ7lr30WKz0vr/aWKhXdBNmNb5D92v7s" crossorigin="anonymous"></script>
     <script type="text/javascript">
         var idProduto = "";
-
-        function mensagemCompra(id, nome) {
-            idProduto = id;
-            document.getElementById('mensagem').innerHTML = "Compra do item: " + nome;
-        }
-
-        function comprarId(id) {
-            window.location = 'compras.php?id=' + id;
+        function valorId(id) {
+            document.getElementById('idProduto').value = id;
         }
     </script>
 </head>
@@ -46,24 +40,34 @@ include "conexao.php";
                 $query = $conn->query($SQL);
                 ?>
 
-
-
+                <h5>Antes, digite seu dados:</h5>
+                <label for="nomePessoa">Nome completo: </label>
+                <input type="text" name="nomePessoa" id="nomePessoa" class="form-control" required>
+                <label for="cpf">CPF: </label>
+                <input type="number" name="cpf" id="cpf" class="form-control" required>
+                <label for="telefone">Telefonde de contato: </label>
+                <input type="number" name="telefone" id="telefone" class="form-control" required>
+                <input type="hidden" name="idProduto" id="idProduto" value="">
+                <br>
 
                 <p class="h4">Tabela de produtos</p>
                 <table class="table table-striped bg-white table-bordered">
-                    <tr>
-                        <th class="text-center">Produto</th>
-                        <th class="text-center">Quantidade</th>
-                    </tr>
+                    <thead class="thead-dark">
+                        <tr>
+                            <th class="text-center">Produto</th>
+                            <th class="text-center"></th>
+                         
+                        </tr>
+                    </thead>
                     <!--exibindo todos os registros da consulta -->
                     <?php
                     while ($exibir = $query->fetch_assoc()) {
                     ?>
                         <tr>
                             <td class="text-center"><?php echo $exibir["nome_produto"] ?></td>
-                            <td>
-                                <a href="#" class="btn btn-success form-control" role="button" data-toggle="modal" data-target="#modalCompra" onclick="mensagemCompra('<?php echo $exibir['id_produto']; ?>'
-                            ,'<?php echo $exibir['nome_produto']; ?>')" title="Comprar">Comprar</a>
+                           
+                            <td class="text-center">
+                                <button type="submit" class="btn-success btn form-control" onclick="valorId('<?php echo $exibir['id_produto'];?>')">Comprar</button>
                             </td>
                         </tr>
                     <?php
@@ -71,44 +75,6 @@ include "conexao.php";
                     ?>
                 </table>
             </form>
-            <!--Modal-->
-            <div class="modal fade" id="modalCompra">
-                <div class="modal-dialog modal-dialog-centered ">
-                    <div class="modal-content">
-
-                        <!-- Modal Header -->
-                        <div class="modal-header">
-                            <h4 class="modal-title" id="mensagem">Compra</h4>
-                            <button type="button" class="close" data-dismiss="modal" &times;> </button>
-                        </div>
-
-                        <!-- Modal body -->
-                        <div class="modal-body" id="conteudo">
-                            <h5>Antes, digite seu dados:</h5>
-                            <label for="nomePessoa">Nome completo: </label>
-                            <input type="text" name="nomePessoa" id="nomePessoa" class="form-control" required>
-                            <label for="cpf">CPF: </label>
-                            <input type="number" name="cpf" id="cpf" class="form-control" required>
-                            <label for="telefone">Telefonde de contato: </label>
-                            <input type="number" name="telefone" id="telefone" class="form-control" required>
-                            <input type="hidden" name="idProduto" id="idProduto" value="">
-                        </div>
-
-                        <!-- Modal footer -->
-                        <div class="modal-footer">
-                            <button name="comprarBtn" id="comprarBtn" type="submit" class="btn btn-success" 
-                            data-dismiss="modal" onclick="comprarId(idProduto)">
-                                Comprar
-                            </button>
-                            <button type="button" class="btn btn-warning" data-dismiss="modal">
-                                Cancelar
-                            </button>
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-
 
         </div>
     </div>
