@@ -1,3 +1,6 @@
+<?php
+include "conexao.php"
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -8,10 +11,7 @@
     <title>Cadastro de produtos</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-    <script src="https://igorescobar.github.io/jQuery-Mask-Plugin/js/jquery.mask.min.js"></script>           
-    <script>
-        $('.dinheiro').mask('#.##0,00', {reverse: true});
-    </script>
+    <script src="https://igorescobar.github.io/jQuery-Mask-Plugin/js/jquery.mask.min.js"></script>
 </head>
 
 <body>
@@ -31,8 +31,9 @@
                 <input type="number" name="valorProduto" id="valorProduto" step="0.01" min="0.01" class="form-control form-group" required>
                 <!--buttons de envio e cancelamento-->
                 <button type="submit" class="btn btn-primary form-group">Cadastrar</button>
-                <button type="reset" class="btn btn-danger form-group">Cancelar</button>    
+                <button type="reset" class="btn btn-danger form-group">Cancelar</button>
             </form>
+
         </div>
     </div>
 </body>

@@ -17,6 +17,7 @@ include "conexao.php";
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" integrity="sha384-w1Q4orYjBQndcko6MimVbzY0tgp4pWB4lZ7lr30WKz0vr/aWKhXdBNmNb5D92v7s" crossorigin="anonymous"></script>
     <script type="text/javascript">
         var idProduto = "";
+
         function valorId(id) {
             document.getElementById('idProduto').value = id;
         }
@@ -39,15 +40,14 @@ include "conexao.php";
                 $SQL = "SELECT * FROM produtos ORDER BY id_produto";
                 $query = $conn->query($SQL);
                 ?>
-
                 <h5>Antes, digite seu dados:</h5>
                 <label for="nomePessoa">Nome completo: </label>
                 <input type="text" name="nomePessoa" id="nomePessoa" class="form-control" required>
                 <label for="cpf">CPF: </label>
-                <input type="number" name="cpf" id="cpf" class="form-control" required>
+                <input type="text" name="cpf" id="cpf" class="form-control" required minlength="11" maxlength="11">
                 <label for="telefone">Telefonde de contato: </label>
-                <input type="number" name="telefone" id="telefone" class="form-control" required>
-                <input type="hidden" name="idProduto" id="idProduto" value="">
+                <input type="text" name="telefone" id="telefone" class="form-control" required minlength="11" maxlength="11">
+                <input type="hidden" name="idProduto" id="idProduto">
                 <br>
 
                 <p class="h4">Tabela de produtos</p>
@@ -56,7 +56,7 @@ include "conexao.php";
                         <tr>
                             <th class="text-center">Produto</th>
                             <th class="text-center"></th>
-                         
+
                         </tr>
                     </thead>
                     <!--exibindo todos os registros da consulta -->
@@ -65,9 +65,9 @@ include "conexao.php";
                     ?>
                         <tr>
                             <td class="text-center"><?php echo $exibir["nome_produto"] ?></td>
-                           
+
                             <td class="text-center">
-                                <button type="submit" class="btn-success btn form-control" onclick="valorId('<?php echo $exibir['id_produto'];?>')">Comprar</button>
+                                <button type="submit" class="btn-success btn form-control" onclick="valorId('<?php echo $exibir['id_produto'] ?>')">Comprar</button>
                             </td>
                         </tr>
                     <?php
