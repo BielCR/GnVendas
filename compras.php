@@ -2,7 +2,7 @@
 //Para fazer a conexao com o BD
 include "conexao.php";
 
-//Recebe os dados vindos do formulario de cadastro
+//Recebe os dados vindos do formulario de compra
 $nomeComprador = (string)$_POST["nomePessoa"];
 $cpf = $_POST["cpf"];
 $telefone = $_POST["telefone"];
@@ -14,8 +14,10 @@ $idProduto = $_POST["idProduto"];
 $sqlProduto = "SELECT * FROM produtos WHERE id_produto = '{$idProduto}';";
 $query = $conn->query($sqlProduto) or die($conn->error);
 $produto = $query->fetch_assoc();
+//salvando os valores em variaveis separadas
 $nomeProduto = $produto["nome_produto"];
 $valorProduto = (int)$produto["valor_produto"];
+//multiplicando os valores decimais
 $valorProduto = $valorProduto * 100;
 
 $doisdias = new DateInterval('P2D');
