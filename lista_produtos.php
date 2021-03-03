@@ -17,7 +17,7 @@ include "conexao.php";
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" integrity="sha384-w1Q4orYjBQndcko6MimVbzY0tgp4pWB4lZ7lr30WKz0vr/aWKhXdBNmNb5D92v7s" crossorigin="anonymous"></script>
     <script type="text/javascript">
         var idProduto = "";
-
+        //salva o valor do id no input de id
         function valorId(id) {
             document.getElementById('idProduto').value = id;
         }
@@ -40,6 +40,7 @@ include "conexao.php";
                 $SQL = "SELECT * FROM produtos ORDER BY id_produto";
                 $query = $conn->query($SQL);
                 ?>
+                <!--coletando dados do usuário para o boleto-->
                 <h5>Antes, digite seu dados:</h5>
                 <label for="nomePessoa">Nome completo: </label>
                 <input type="text" name="nomePessoa" id="nomePessoa" class="form-control" required>
