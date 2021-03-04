@@ -18,7 +18,7 @@ $nomeProduto = $produto["nome_produto"];
 $valorProduto = (int)$produto["valor_produto"];
 $valorProduto = $valorProduto * 100;
 
-$doisdias = new DateInterval('P2D');
+$doisdias = new DateInterval('P1D');
 $emissao = new DateTime();
 $validade = $emissao->add($doisdias);
 $validade = $validade->format("Y-m-d");
