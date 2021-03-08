@@ -15,11 +15,17 @@ include "conexao.php";
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" integrity="sha384-w1Q4orYjBQndcko6MimVbzY0tgp4pWB4lZ7lr30WKz0vr/aWKhXdBNmNb5D92v7s" crossorigin="anonymous"></script>
-    <script type="text/javascript">
+    <script>
         var idProduto = "";
+        var formatado = "";
         //salva o valor do id no input de id
         function valorId(id) {
             document.getElementById('idProduto').value = id;
+        }
+
+        function formataReal(valor){
+            //var valor = parseInt(document.getElementById("moeda").innerText);
+            formatado = valor.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'});
         }
     </script>
 </head>
@@ -56,6 +62,7 @@ include "conexao.php";
                     <thead class="thead-dark">
                         <tr>
                             <th class="text-center">Produto</th>
+                            <th class="text-center">Valor</th>
                             <th class="text-center"></th>
 
                         </tr>
@@ -63,10 +70,12 @@ include "conexao.php";
                     <!--exibindo todos os registros da consulta -->
                     <?php
                     while ($exibir = $query->fetch_assoc()) {
+                        echo '<script> formataReal('.$exibir["valor_produto"].') </script>';
+                       $valor =  '<script>document.write(formatado)</script>';
                     ?>
                         <tr>
                             <td class="text-center"><?php echo $exibir["nome_produto"] ?></td>
-
+                            <td class="text-center" id="moeda"><?php echo $valor?></td>
                             <td class="text-center">
                                 <button type="submit" class="btn-success btn form-control" onclick="valorId('<?php echo $exibir['id_produto'] ?>')">Comprar</button>
                             </td>
